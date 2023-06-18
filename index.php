@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de celulares</title>
-</head>
-<body>
-    <?php
-        $titulo = "Tienda de celulares";
-        echo "<h1> ".$titulo." </h1>"; 
-    ?>
-    
-</body>
-</html>
+<?php
+require_once "controller/CelularesController.php";
+
+$action = $_GET["action"];
+define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+
+if($action == '') {
+    $controller = new CelularesController();
+    $controller->getCelulares();
+} else {
+    if(isset($action)) {
+        $partesURL = explode("/", $action);
+
+        if($partesURL[0] == "celulares") {
+            $controller = new CelularesController();
+            $controller->getCelulares();
+        } else if($partesURL[0] == "insertar") {
+            $controller = new CelularesController();
+            $controller->crearCelular();
+        } else if($partesURL[0] == "borrar") {
+            $controller = new CelularesController;
+            $controller->borrarCelular($partesURL[1]);
+        }
+    }
+}
+
+?>
