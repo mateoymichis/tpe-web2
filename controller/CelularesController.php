@@ -17,9 +17,14 @@ class CelularesController {
         $this->view->displayCelulares($celulares);
     }
 
+    public function getDetalleCelular($id) {
+        $celular = $this->model->getDetalleCelular($id);
+        $this->view->displayCelular($celular);
+    }
+
     public function getCelular($id) {
         $celular = $this->model->getCelular($id);
-        $this->view->displayCelular($celular);
+        return $celular;
     }
 
     public function crearCelular() {

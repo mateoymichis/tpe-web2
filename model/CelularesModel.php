@@ -8,11 +8,24 @@ class CelularesModel {
     }
 
     public function getCelulares() {
-        $sentencia = $this->db->prepare(("SELECT * FROM celulares"));
+        $sentencia = $this->db->prepare(("  SELECT c.modelo, c.descripcion, c.imagen, m.nombre AS marca
+                                            FROM celulares AS c
+                                            JOIN marcas AS m ON c.marca_id = m.id_marca;"));
         $sentencia->execute();
         $celulares = $sentencia->fetchAll(PDO::FETCH_OBJ);
 
         return $celulares;
+    }
+
+    public function getDetalleCelular($id) {
+        $sentencia = $this->db->prepare(("SELECT c.modelo, c.descripcion, c.imagen, m.nombre AS marca
+                                            FROM celulares AS c
+                                            JOIN marcas AS m ON c.marca_id = m.id_marca
+                                            WHERE id_celular=?"));
+        $sentencia->execute(array($id));
+        $celular = $sentencia->fetch(PDO::FETCH_OBJ);
+
+        return $celular;
     }
 
     public function getCelular($id) {

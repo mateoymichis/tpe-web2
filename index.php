@@ -39,13 +39,15 @@ switch ($params[0]) {
                     break;
                 case 'detalles':
                     $controller = new CelularesController();
-                    $controller->getCelular($params[2]);
+                    $controller->getDetalleCelular($params[2]);
                     break;
             }
         } else {
             $controller = new CelularesController();
             $controller->getCelulares();
+            break;
         }
+        break;
     case 'marcas':
         if (isset($params[1]) && !empty($params[1])) {
             switch ($params[1]) {
@@ -70,6 +72,8 @@ switch ($params[0]) {
         } else {
             $controller = new MarcasController();
             $controller->getMarcas();
+            break;
         }
+        break;
 }
 ?>

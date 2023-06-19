@@ -1,6 +1,6 @@
 {include 'templates/header.tpl'}
 <div class="container">
-    <h1>Lista de marcas</h1>
+    <h2>Lista de marcas</h2>
 
     <ul>
     {foreach $marcas as $marca}

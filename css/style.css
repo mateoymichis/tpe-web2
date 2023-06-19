@@ -1,6 +1,29 @@
 body {
     background-color: azure;
 }
+
 img {
     max-height: 150px;
 }
+.nav-menu {
+    background-color: cadetblue;
+    padding: 1rem;
+}
+
+.nav-menu > ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu > ul > li > a {
+    text-transform: uppercase;
+    margin-left: 2rem;
+    text-decoration: none;
+}
+
+footer {
+    background-color: cadetblue;
+    padding: 1rem 0;
+    text-align: center;
+}
+

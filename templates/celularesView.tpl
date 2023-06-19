@@ -1,6 +1,6 @@
 {include 'templates/header.tpl'}
 <div class="container">
-    <h1>Lista de celulares</h1>
+    <h2>Lista de celulares</h2>
 
     <ul>
     {foreach $celulares as $celular}
@@ -8,6 +8,7 @@
         <p>{$celular->modelo}</p>
         <p>{$celular->descripcion}</p>
         <p><img src="{$celular->imagen}"></p>
+        <p>{$celular->marca}</p>
         </li>
     {/foreach}
 </div>
