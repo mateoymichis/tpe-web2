@@ -14,6 +14,11 @@ class MarcasModel {
 
         return $marcas;
     }
+
+    public function crearMarca($nombre, $cuit) {
+        $sentencia = $this->db->prepare("INSERT INTO marcas(nombre, cuit) VALUES(?, ?)");
+        $sentencia->execute(array($nombre, $cuit));
+    }
 }
 
 ?>

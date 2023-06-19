@@ -13,8 +13,13 @@ class MarcasController {
     }
 
     public function getMarcas() {
-        $celulares = $this->model->getMarcas();
-        $this->view->displayMarcas($celulares);
+        $marcas = $this->model->getMarcas();
+        $this->view->displayMarcas($marcas);
+    }
+
+    public function crearMarca() {
+        $this->model->crearMarca($_POST['nombre'], $_POST['cuit']);
+        header(("Location: " . BASE_URL));
     }
 }
 ?>

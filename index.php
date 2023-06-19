@@ -48,6 +48,12 @@ switch ($params[0]) {
         }
     case 'marcas':
         if (isset($params[1]) && !empty($params[1])) {
+            switch ($params[1]) {
+            case 'insertar':
+                $controller = new MarcasController();
+                $controller->crearMarca();
+                break;
+        }
 
         } else {
             $controller = new MarcasController();
