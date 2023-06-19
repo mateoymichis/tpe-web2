@@ -17,6 +17,12 @@ class CelularesController {
         $this->view->displayCelulares($celulares);
     }
 
+    public function getCelularesPorMarca($marca) {
+        $celulares = $this->model->getCelularesPorMarca($marca);
+        $this->view->displayCelulares($celulares);
+        
+    }
+
     public function getDetalleCelular($id) {
         $celular = $this->model->getDetalleCelular($id);
         $this->view->displayCelular($celular);
@@ -40,6 +46,7 @@ class CelularesController {
     public function formEditarCelular($id) {
         $celular = $this->model->getCelular($id);
         $this->view->editCelular($celular, $id);
+        //lista de categorias aca
     }
 
     public function editarCelular($id) {

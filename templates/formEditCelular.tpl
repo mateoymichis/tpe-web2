@@ -4,6 +4,7 @@
     <input type="text" name="descripcion" value="{$celular->descripcion}">
     <input type="text" name="imagen" value="{$celular->imagen}">
     <input type="number" name="marca_id"  value="{$celular->marca_id}">
+    <!- cambiar por lista de categorias ->
     <input type="submit" value="Editar">
 </form>
 {include 'templates/footer.tpl'}

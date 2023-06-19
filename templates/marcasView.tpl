@@ -7,6 +7,7 @@
         <li>
         <p>{$marca->nombre}</p>
         <p>{$marca->cuit}</p>
+        <p><a href="{BASE_URL}celulares/marca/{$marca->id_marca}">Ver celulares de {$marca->nombre}</a></p>
         </li>
     {/foreach}
 </div>

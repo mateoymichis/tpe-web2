@@ -2,8 +2,12 @@ body {
     background-color: azure;
 }
 
-img {
+.img-lista {
     max-height: 150px;
+}
+
+.img-detalle {
+    max-height: 300px;
 }
 .nav-menu {
     background-color: cadetblue;

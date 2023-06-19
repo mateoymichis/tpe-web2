@@ -7,7 +7,7 @@
         <li>
         <p>{$celular->modelo}</p>
         <p>{$celular->descripcion}</p>
-        <p><img src="{$celular->imagen}"></p>
+        <p><img class="img-lista" src="{$celular->imagen}"></p>
         <p>{$celular->marca}</p>
         </li>
     {/foreach}

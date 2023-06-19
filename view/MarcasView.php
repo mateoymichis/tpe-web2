@@ -12,6 +12,14 @@ class MarcasView {
         $smarty->display('templates/marcasView.tpl');
     }
 
+    public function displayNombresMarcas($marcas) {
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Marcas');
+        $smarty->assign('marcas', $marcas);
+ 
+        $smarty->display('templates/marcasNombres.tpl');
+    }
+
     public function editarMarca($marca, $id) {
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Editar marca');

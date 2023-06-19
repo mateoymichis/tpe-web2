@@ -15,6 +15,14 @@ class MarcasModel {
         return $marcas;
     }
 
+    public function getNombresMarcas() {
+        $sentencia = $this->db->prepare(("SELECT id_marca, nombre FROM marcas"));
+        $sentencia->execute();
+        $marcas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+
+        return $marcas;
+    }
+
     public function getMarca($id) {
         $sentencia = $this->db->prepare(("SELECT * FROM marcas WHERE id_marca=?"));
         $sentencia->execute(array($id));

@@ -41,6 +41,10 @@ switch ($params[0]) {
                     $controller = new CelularesController();
                     $controller->getDetalleCelular($params[2]);
                     break;
+                case 'marca':
+                    $controller = new CelularesController();
+                    $controller->getCelularesPorMarca($params[2]);
+                    break;
             }
         } else {
             $controller = new CelularesController();
@@ -67,6 +71,12 @@ switch ($params[0]) {
                 $controller = new MarcasController();
                 $controller->editarMarca($params[2]);
                 break;
+                //solo para ver, luego poner en lista desplegable
+            case 'all':
+                $controller = new MarcasController();
+                $controller->getNombresMarcas();
+                break;
+
         }
 
         } else {
@@ -74,6 +84,9 @@ switch ($params[0]) {
             $controller->getMarcas();
             break;
         }
+        break;
+    case 'nosotros':
+        echo "nosotros";
         break;
 }
 ?>

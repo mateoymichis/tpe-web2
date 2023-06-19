@@ -17,14 +17,19 @@ class MarcasController {
         $this->view->displayMarcas($marcas);
     }
 
+    public function getNombresMarcas() {
+        $marcas = $this->model->getNombresMarcas();
+        $this->view->displayNombresMarcas($marcas);
+    }
+
     public function crearMarca() {
         $this->model->crearMarca($_POST['nombre'], $_POST['cuit']);
-        header(("Location: " . BASE_URL));
+        header(("Location: " . BASE_URL . 'marcas'));
     }
 
     public function borrarMarca($id) {
         $this->model->borrarMarca($id);
-        header("Location: " . BASE_URL);
+        header("Location: " . BASE_URL . 'marcas');
     }
 
     public function formEditarMarca($id) {
@@ -34,7 +39,7 @@ class MarcasController {
 
     public function editarMarca($id) {
         $this->model->editarMarca($_POST['nombre'], $_POST['cuit'], $id);
-        header(("Location: " . BASE_URL));
+        header(("Location: " . BASE_URL . 'marcas'));
     }
 }
 ?>
