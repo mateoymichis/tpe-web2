@@ -10,7 +10,16 @@ class MarcasView {
         $smarty->assign('marcas', $marcas);
  
         $smarty->display('templates/marcasView.tpl');
-     }
+    }
+
+    public function editarMarca($marca, $id) {
+        $smarty = new Smarty();
+        $smarty->assign('titulo', 'Editar marca');
+        $smarty->assign('marca', $marca);
+        $smarty->assign('id', $id);
+        $smarty->assign('base', BASE_URL);
+        $smarty->display('templates/formEditMarca.tpl');
+    }
 
 }
 

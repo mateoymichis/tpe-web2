@@ -57,6 +57,14 @@ switch ($params[0]) {
                 $controller = new MarcasController();
                 $controller->borrarMarca($params[2]);
                 break;
+            case 'form-editar':
+                $controller = new MarcasController();
+                $controller->formEditarMarca($params[2]);
+                break;
+            case 'editar':
+                $controller = new MarcasController();
+                $controller->editarMarca($params[2]);
+                break;
         }
 
         } else {

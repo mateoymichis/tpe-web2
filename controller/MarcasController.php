@@ -26,5 +26,15 @@ class MarcasController {
         $this->model->borrarMarca($id);
         header("Location: " . BASE_URL);
     }
+
+    public function formEditarMarca($id) {
+        $marca = $this->model->getMarca($id);
+        $this->view->editarMarca($marca, $id);
+    }
+
+    public function editarMarca($id) {
+        $this->model->editarMarca($_POST['nombre'], $_POST['cuit'], $id);
+        header(("Location: " . BASE_URL));
+    }
 }
 ?>
