@@ -1,4 +1,4 @@
-<form action="insertar" method="post">
+<form action="celulares/insertar" method="post">
     <input type="text" name="modelo" placeholder="Modelo">
     <input type="text" name="descripcion" placeholder="Descripcion">
     <input type="text" name="imagen"  placeholder="Imagen">

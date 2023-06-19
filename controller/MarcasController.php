@@ -11,5 +11,10 @@ class MarcasController {
         $this->model = new MarcasModel();
         $this->view = new MarcasView();
     }
+
+    public function getMarcas() {
+        $celulares = $this->model->getMarcas();
+        $this->view->displayMarcas($celulares);
+    }
 }
 ?>
