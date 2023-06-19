@@ -14,12 +14,18 @@ class CelularesController {
 
     public function getCelulares() {
         $celulares = $this->model->getCelulares();
-        $this->view->displayCelulares($celulares);
+        require_once './controller/MarcasController.php';
+        $marcasController = new MarcasController();
+        $marcas = $marcasController->getNombresMarcas();
+        $this->view->displayCelulares($celulares, $marcas);
     }
 
     public function getCelularesPorMarca($marca) {
         $celulares = $this->model->getCelularesPorMarca($marca);
-        $this->view->displayCelulares($celulares);
+        require_once './controller/MarcasController.php';
+        $marcasController = new MarcasController();
+        $marcas = $marcasController->getNombresMarcas();
+        $this->view->displayCelulares($celulares, $marcas);
         
     }
 

@@ -5,11 +5,11 @@ require_once 'libs/smarty/Smarty.class.php';
 class CelularesView {
 
 
-    public function displayCelulares($celulares) {
+    public function displayCelulares($celulares, $marcas) {
        $smarty = new Smarty();
        $smarty->assign('titulo', 'Lista de celulares');
        $smarty->assign('celulares', $celulares);
-
+       $smarty->assign('marcas', $marcas);
        $smarty->display('templates/celularesView.tpl');
     }
 

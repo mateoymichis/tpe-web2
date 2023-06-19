@@ -2,7 +2,12 @@
     <input type="text" name="modelo" placeholder="Modelo">
     <input type="text" name="descripcion" placeholder="Descripcion">
     <input type="text" name="imagen"  placeholder="Imagen">
-    <input type="number" name="marca_id"  value="1">
-    <!- cambiar por lista de categorias ->
+    <select name="marca_id">
+    {foreach $marcas as $marca}
+        <option value="{$marca->id_marca}">
+            {$marca->nombre}
+        </option>
+    {/foreach}
+    </select>
     <input type="submit" value="Insertar">
 </form>
