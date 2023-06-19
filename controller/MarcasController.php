@@ -19,7 +19,7 @@ class MarcasController {
 
     public function getNombresMarcas() {
         $marcas = $this->model->getNombresMarcas();
-        $this->view->displayNombresMarcas($marcas);
+        return $marcas;
     }
 
     public function crearMarca() {

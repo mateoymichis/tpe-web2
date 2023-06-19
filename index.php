@@ -71,12 +71,6 @@ switch ($params[0]) {
                 $controller = new MarcasController();
                 $controller->editarMarca($params[2]);
                 break;
-                //solo para ver, luego poner en lista desplegable
-            case 'all':
-                $controller = new MarcasController();
-                $controller->getNombresMarcas();
-                break;
-
         }
 
         } else {

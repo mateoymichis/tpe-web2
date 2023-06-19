@@ -3,8 +3,18 @@
     <input type="text" name="modelo" value="{$celular->modelo}">
     <input type="text" name="descripcion" value="{$celular->descripcion}">
     <input type="text" name="imagen" value="{$celular->imagen}">
-    <input type="number" name="marca_id"  value="{$celular->marca_id}">
-    <!- cambiar por lista de categorias ->
+    <select name="marca_id">
+    {foreach $marcas as $marca}
+        <option value="{$marca->id_marca}"
+        {if ($celular->marca_id) == ($marca->id_marca)}
+            selected="true"
+        {/if}
+        >
+            {$marca->nombre}
+        </option>
+    {/foreach}
+    </select>
+    
     <input type="submit" value="Editar">
 </form>
 {include 'templates/footer.tpl'}

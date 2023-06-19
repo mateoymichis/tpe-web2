@@ -45,8 +45,10 @@ class CelularesController {
 
     public function formEditarCelular($id) {
         $celular = $this->model->getCelular($id);
-        $this->view->editCelular($celular, $id);
-        //lista de categorias aca
+        require_once './controller/MarcasController.php';
+        $marcasController = new MarcasController();
+        $marcas = $marcasController->getNombresMarcas();
+        $this->view->editCelular($celular, $id, $marcas);
     }
 
     public function editarCelular($id) {

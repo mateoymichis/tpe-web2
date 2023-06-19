@@ -21,12 +21,13 @@ class CelularesView {
         $smarty->display('templates/celularView.tpl');
     }
 
-    public function editCelular($celular, $id) {
+    public function editCelular($celular, $id, $marcas) {
         $smarty = new Smarty();
         $smarty->assign('titulo', 'Editar celular');
         $smarty->assign('celular', $celular);
         $smarty->assign('id', $id);
         $smarty->assign('base', BASE_URL);
+        $smarty->assign('marcas', $marcas);
         $smarty->display('templates/formEditCelular.tpl');
     }
 }
