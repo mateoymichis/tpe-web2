@@ -53,6 +53,10 @@ switch ($params[0]) {
                 $controller = new MarcasController();
                 $controller->crearMarca();
                 break;
+            case 'borrar':
+                $controller = new MarcasController();
+                $controller->borrarMarca($params[2]);
+                break;
         }
 
         } else {

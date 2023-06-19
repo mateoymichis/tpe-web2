@@ -19,6 +19,11 @@ class MarcasModel {
         $sentencia = $this->db->prepare("INSERT INTO marcas(nombre, cuit) VALUES(?, ?)");
         $sentencia->execute(array($nombre, $cuit));
     }
+
+    public function borrarMarca($id) {
+        $sentencia = $this->db->prepare("DELETE FROM marcas WHERE id_marca=?");
+        $sentencia->execute(array($id));
+    }
 }
 
 ?>

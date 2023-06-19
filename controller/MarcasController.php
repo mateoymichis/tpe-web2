@@ -21,5 +21,10 @@ class MarcasController {
         $this->model->crearMarca($_POST['nombre'], $_POST['cuit']);
         header(("Location: " . BASE_URL));
     }
+
+    public function borrarMarca($id) {
+        $this->model->borrarMarca($id);
+        header("Location: " . BASE_URL);
+    }
 }
 ?>
