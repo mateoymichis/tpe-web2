@@ -11,7 +11,10 @@ if($action == '') {
     if(isset($action)) {
         $partesURL = explode("/", $action);
 
-        if($partesURL[0] == "celulares") {
+        if($partesURL[0] == "celulares" && isset($partesURL[1])) {
+            $controller = new CelularesController();
+            $controller->getCelular($partesURL[1]);
+        } else if($partesURL[0] == "celulares"){
             $controller = new CelularesController();
             $controller->getCelulares();
         } else if($partesURL[0] == "insertar") {
@@ -20,7 +23,15 @@ if($action == '') {
         } else if($partesURL[0] == "borrar") {
             $controller = new CelularesController;
             $controller->borrarCelular($partesURL[1]);
+        } else if ($partesURL[0] == "editar") {
+            $controller = new CelularesController();
+            $controller->editarCelular($partesURL[1]);
+        } else if ($partesURL[0] == "form-editar") {
+            $controller = new CelularesController();
+            $controller->formEditarCelular($partesURL[1]);
         }
+
+        
     }
 }
 

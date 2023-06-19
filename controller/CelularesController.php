@@ -17,6 +17,11 @@ class CelularesController {
         $this->view->displayCelulares($celulares);
     }
 
+    public function getCelular($id) {
+        $celular = $this->model->getCelular($id);
+        $this->view->displayCelular($celular);
+    }
+
     public function crearCelular() {
         $this->model->crearCelular($_POST['modelo'], $_POST['descripcion'], $_POST['imagen'], $_POST['marca_id']);
         header(("Location: " . BASE_URL));
@@ -25,6 +30,16 @@ class CelularesController {
     public function borrarCelular($id) {
         $this->model->borrarCelular($id);
         header("Location: " . BASE_URL);
+    }
+
+    public function formEditarCelular($id) {
+        $celular = $this->model->getCelular($id);
+        $this->view->editCelular($celular, $id);
+    }
+
+    public function editarCelular($id) {
+        $this->model->editarCelular($_POST['modelo'], $_POST['descripcion'], $_POST['imagen'], $_POST['marca_id'], $id);
+        header(("Location: " . BASE_URL));
     }
 }
 
