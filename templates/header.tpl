@@ -14,5 +14,7 @@
         <li><a href="{BASE_URL}celulares">celulares</a></li>
         <li><a href="{BASE_URL}marcas">marcas</a></li>
         <li><a href="{BASE_URL}nosotros">nosotros</a></li>
+        <li><a href="{BASE_URL}login">login</a></li>
+        <li><a href="{BASE_URL}logout">logout</a></li>
     </ul>
 </nav>

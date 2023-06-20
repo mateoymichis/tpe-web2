@@ -11,6 +11,15 @@ class CelularesController {
         $this->model = new CelularesModel();
         $this->view = new CelularesView();
     }
+    
+    private function checkLoggedIn() {
+        session_start();
+        if (!isset($_SESSION['ID_USUARIO'])) {
+            header('Location: ' . BASE_URL . 'login');
+            die();
+        }     
+    }
+
 
     public function getCelulares() {
         $celulares = $this->model->getCelulares();
@@ -40,16 +49,19 @@ class CelularesController {
     }
 
     public function crearCelular() {
+        $this->checkLoggedIn();
         $this->model->crearCelular($_POST['modelo'], $_POST['descripcion'], $_POST['imagen'], $_POST['marca_id']);
         header(("Location: " . BASE_URL));
     }
 
     public function borrarCelular($id) {
+        $this->checkLoggedIn();
         $this->model->borrarCelular($id);
         header("Location: " . BASE_URL);
     }
 
     public function formEditarCelular($id) {
+        $this->checkLoggedIn();
         $celular = $this->model->getCelular($id);
         require_once './controller/MarcasController.php';
         $marcasController = new MarcasController();
@@ -58,6 +70,7 @@ class CelularesController {
     }
 
     public function editarCelular($id) {
+        $this->checkLoggedIn();
         $this->model->editarCelular($_POST['modelo'], $_POST['descripcion'], $_POST['imagen'], $_POST['marca_id'], $id);
         header(("Location: " . BASE_URL));
     }

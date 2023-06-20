@@ -1,6 +1,7 @@
 <?php
 require_once "controller/CelularesController.php";
 require_once "controller/MarcasController.php";
+require_once "controller/LoginController.php";
 
 
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -82,5 +83,21 @@ switch ($params[0]) {
     case 'nosotros':
         echo "nosotros";
         break;
+    case 'login':
+        $controller = new LoginController();
+        $controller->showLogin();
+        break;
+    case 'verify':
+        $controller = new LoginController();
+        $controller->verificarUsuario();
+        break;
+    case 'logout':
+        $controller = new LoginController();
+        $controller->logout();
+        break;
+    default:
+        echo "<h1>Error 404 - Page not found </h1>";
+        break;
+
 }
 ?>
