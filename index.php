@@ -1,7 +1,8 @@
 <?php
-require_once "controller/CelularesController.php";
-require_once "controller/MarcasController.php";
-require_once "controller/LoginController.php";
+require_once "./controller/CelularesController.php";
+require_once "./controller/MarcasController.php";
+require_once "./controller/LoginController.php";
+require_once "./controller/NosotrosController.php";
 
 
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -81,7 +82,8 @@ switch ($params[0]) {
         }
         break;
     case 'nosotros':
-        echo "nosotros";
+        $controller = new NosotrosController();
+        $controller->showNosotros();
         break;
     case 'login':
         $controller = new LoginController();
