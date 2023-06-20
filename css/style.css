@@ -10,7 +10,7 @@ body {
     max-height: 300px;
 }
 .nav-menu {
-    background-color: cadetblue;
+    background-color: rgb(166, 213, 214);
     padding: 1rem;
 }
 
@@ -25,8 +25,23 @@ body {
     text-decoration: none;
 }
 
+.marca, .modelo, .modelo-detalle  {
+    font-weight: bold;
+    color: rgb(17, 17, 156);
+}
+
+.modelo , .destacar{
+    font-size: 1.5rem;
+}
+
+.item {
+    border: 1px solid rgb(17, 17, 156);
+    border-radius: 5px;
+    padding: 2rem;
+}
+
 footer {
-    background-color: cadetblue;
+    background-color:  rgb(166, 213, 214);
     padding: 1rem 0;
     text-align: center;
 }
