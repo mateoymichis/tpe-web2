@@ -8,7 +8,7 @@ class CelularesModel {
     }
 
     public function getCelulares() {
-        $sentencia = $this->db->prepare(("  SELECT c.modelo, c.descripcion, c.imagen, m.nombre AS marca
+        $sentencia = $this->db->prepare(("  SELECT c.id_celular, c.modelo, c.descripcion, c.imagen, m.nombre AS marca
                                             FROM celulares AS c
                                             JOIN marcas AS m ON c.marca_id = m.id_marca;"));
         $sentencia->execute();
@@ -18,7 +18,7 @@ class CelularesModel {
     }
 
     public function getCelularesPorMarca($marca) {
-        $sentencia = $this->db->prepare(("  SELECT c.modelo, c.descripcion, c.imagen, m.nombre AS marca
+        $sentencia = $this->db->prepare(("  SELECT c.id_celular, c.modelo, c.descripcion, c.imagen, m.nombre AS marca
                                             FROM celulares AS c
                                             JOIN marcas AS m ON c.marca_id = m.id_marca WHERE m.id_marca=$marca;"));
         $sentencia->execute();
@@ -28,7 +28,7 @@ class CelularesModel {
     }
 
     public function getDetalleCelular($id) {
-        $sentencia = $this->db->prepare(("SELECT c.modelo, c.descripcion, c.imagen, m.nombre AS marca
+        $sentencia = $this->db->prepare(("SELECT c.id_celular, c.modelo, c.descripcion, c.imagen, m.nombre AS marca
                                             FROM celulares AS c
                                             JOIN marcas AS m ON c.marca_id = m.id_marca
                                             WHERE id_celular=?"));
