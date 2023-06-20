@@ -1,26 +1,20 @@
 <?php
 require_once "./model/CelularesModel.php";
 require_once "./view/CelularesView.php";
+require_once "./helper/AuthHelper.php";
 
 class CelularesController {
     private $model;
     private $view;
+    private $authHelper;
 
     function __construct()
     {
         $this->model = new CelularesModel();
         $this->view = new CelularesView();
+        $this->authHelper = new AuthHelper();
     }
     
-    private function checkLoggedIn() {
-        session_start();
-        if (!isset($_SESSION['ID_USUARIO'])) {
-            header('Location: ' . BASE_URL . 'login');
-            die();
-        }     
-    }
-
-
     public function getCelulares() {
         $celulares = $this->model->getCelulares();
         require_once './controller/MarcasController.php';
@@ -49,19 +43,19 @@ class CelularesController {
     }
 
     public function crearCelular() {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->crearCelular($_POST['modelo'], $_POST['descripcion'], $_POST['imagen'], $_POST['marca_id']);
         header(("Location: " . BASE_URL));
     }
 
     public function borrarCelular($id) {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->borrarCelular($id);
         header("Location: " . BASE_URL);
     }
 
     public function formEditarCelular($id) {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $celular = $this->model->getCelular($id);
         require_once './controller/MarcasController.php';
         $marcasController = new MarcasController();
@@ -70,7 +64,7 @@ class CelularesController {
     }
 
     public function editarCelular($id) {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->editarCelular($_POST['modelo'], $_POST['descripcion'], $_POST['imagen'], $_POST['marca_id'], $id);
         header(("Location: " . BASE_URL));
     }

@@ -1,32 +1,41 @@
 <?php
 
-require_once 'libs/smarty/Smarty.class.php';
+require_once "./libs/smarty/Smarty.class.php";
+require_once "./helper/AuthHelper.php";
 
 class MarcasView {
 
+    private $smarty;
+    private $authHelper;
+
+    function __construct()
+    {
+        $this->smarty = new Smarty();
+        $this->authHelper = new AuthHelper();
+        $user = $this->authHelper->getLoggedUserName();
+        $this->smarty->assign('user', $user);
+    }
+
     public function displayMarcas($marcas) {
-        $smarty = new Smarty();
-        $smarty->assign('titulo', 'Lista de marcas');
-        $smarty->assign('marcas', $marcas);
+        $this->smarty->assign('titulo', 'Lista de marcas');
+        $this->smarty->assign('marcas', $marcas);
  
-        $smarty->display('templates/marcasView.tpl');
+        $this->smarty->display('templates/marcasView.tpl');
     }
 
     public function displayNombresMarcas($marcas) {
-        $smarty = new Smarty();
-        $smarty->assign('titulo', 'Marcas');
-        $smarty->assign('marcas', $marcas);
+        $this->smarty->assign('titulo', 'Marcas');
+        $this->smarty->assign('marcas', $marcas);
  
-        $smarty->display('templates/marcasNombres.tpl');
+        $this->smarty->display('templates/marcasNombres.tpl');
     }
 
     public function editarMarca($marca, $id) {
-        $smarty = new Smarty();
-        $smarty->assign('titulo', 'Editar marca');
-        $smarty->assign('marca', $marca);
-        $smarty->assign('id', $id);
-        $smarty->assign('base', BASE_URL);
-        $smarty->display('templates/formEditMarca.tpl');
+        $this->smarty->assign('titulo', 'Editar marca');
+        $this->smarty->assign('marca', $marca);
+        $this->smarty->assign('id', $id);
+        $this->smarty->assign('base', BASE_URL);
+        $this->smarty->display('templates/formEditMarca.tpl');
     }
 
 }

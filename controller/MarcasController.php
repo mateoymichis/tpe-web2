@@ -1,23 +1,18 @@
 <?php
 require_once './model/MarcasModel.php';
 require_once './view/MarcasView.php';
+require_once "./helper/AuthHelper.php";
 
 class MarcasController {
     private $model;
     private $view;
+    private $authHelper;
 
     function __construct()
     {
         $this->model = new MarcasModel();
         $this->view = new MarcasView();
-    }
-
-    private function checkLoggedIn() {
-        session_start();
-        if (!isset($_SESSION['ID_USUARIO'])) {
-            header('Location: ' . BASE_URL . 'login');
-            die();
-        }     
+        $this->authHelper = new AuthHelper();
     }
 
     public function getMarcas() {
@@ -31,25 +26,25 @@ class MarcasController {
     }
 
     public function crearMarca() {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->crearMarca($_POST['nombre'], $_POST['cuit']);
         header(("Location: " . BASE_URL . 'marcas'));
     }
 
     public function borrarMarca($id) {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->borrarMarca($id);
         header("Location: " . BASE_URL . 'marcas');
     }
 
     public function formEditarMarca($id) {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $marca = $this->model->getMarca($id);
         $this->view->editarMarca($marca, $id);
     }
 
     public function editarMarca($id) {
-        $this->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $this->model->editarMarca($_POST['nombre'], $_POST['cuit'], $id);
         header(("Location: " . BASE_URL . 'marcas'));
     }
